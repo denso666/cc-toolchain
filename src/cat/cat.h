@@ -1,5 +1,5 @@
-#ifndef COMMANDS_H
-#define COMMANDS_H
+#ifndef CAT_H
+#define CAT_H
 
 #include <sys/stat.h>
 #include <unistd.h>
