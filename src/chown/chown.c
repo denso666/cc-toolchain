@@ -4,6 +4,11 @@
  * Allows to change the ownership of a file
  */
 int custom_chown(char *path, char *owners) {
+  if (path == NULL || owners == NULL) {
+    errno = EINVAL;
+    return EXIT_FAILURE;
+  }
+
   // Validates the path exists
   struct stat file_stat;
   if (stat(path, &file_stat) == -1) {
