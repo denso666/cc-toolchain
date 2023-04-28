@@ -3,4 +3,4 @@ services:
   debian:
     build: .
     volumes:
-      - .:/src
+      - .:/project
