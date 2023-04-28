@@ -1,5 +1,5 @@
 #include "cp.h"
-#include <stdlib.h>
+#include "../utils/utils.h"
 
 /**
  * Gets the mode from the inode entry of a file
@@ -10,21 +10,6 @@ int get_mode(char *path) {
     return -1;
   }
   return file_stat.st_mode;
-}
-
-/**
- * Checks it a path is a directory
- * Return 1 if it is a file, 0 if it is not and -1 in case of error
- */
-int is_dir(char *path) {
-  struct stat file_stat;
-  if (lstat(path, &file_stat) == -1) {
-    return -1;
-  }
-  if (S_ISDIR(file_stat.st_mode)) {
-    return 1;
-  }
-  return 0;
 }
 
 /**
