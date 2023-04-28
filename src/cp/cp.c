@@ -1,4 +1,5 @@
 #include "cp.h"
+#include <stdlib.h>
 
 /**
  * Gets the mode from the inode entry of a file
@@ -284,6 +285,11 @@ int cp_dir(char *source, char *dest) {
  * Copy function, if r_flag is set to 1, it will copy directories recursive
  */
 int cp(char *source, char *destination, int r_flag) {
+  if (source == NULL || destination == NULL) {
+    errno = EINVAL;
+    return EXIT_FAILURE;
+  }
+
   // Depending on if -r is set calls to diferent functions
   if (r_flag) {
     return cp_dir(source, destination);
