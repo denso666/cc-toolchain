@@ -12,7 +12,7 @@ LIB_FLAGS = $(foreach tool,$(notdir $(TOOLS)), $(addsuffix $(tool),-L -l))
 all: $(PREFIX)busybox
 
 $(PREFIX)busybox: $(OBJ) main.c
-	$(CROSS_COMPILE)$(CC) $(LIB_FLAGS) -Wall -o $@
+	$(CROSS_COMPILE)$(CC) main.c $(LIB_FLAGS) -Wall -o $@
 
 %.o: %.c
 	$(CROSS_COMPILE)$(CC) $(CFLAGS) $< -o $@
