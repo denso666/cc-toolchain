@@ -27,9 +27,9 @@ lib%.so: %.o
 clean:
 	rm -rf **/*.o **/*.so $(PREFIX)busybox $(OUTPUT_DIR)
 
-install:
-	ssh $(SSH_CREDENTIALS) 'mkdir ~/lib'
+install: $(BIN) $(OBJ)
+	ssh $(SSH_CREDENTIALS) 'mkdir -p ~/lib'
 	scp $(BIN) $(SSH_CREDENTIALS):~
 	scp **/*.so $(SSH_CREDENTIALS):~/lib
-	ssh $(SSH_CREDENTIALS) 'cp ~/lib/* /lib/'
+	ssh -t $(SSH_CREDENTIALS) 'sudo cp ~/lib/* /lib/'
 
