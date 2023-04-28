@@ -19,3 +19,12 @@ int is_dir(char *path) {
   }
   return 0;
 }
+
+int remove_lastchar(char *str) {
+  if (str != NULL) {
+    int len = strlen(str);
+    str[len - 1] = '\0';
+    return 0;
+  }
+  return -1;
+}
