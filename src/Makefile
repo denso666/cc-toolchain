@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -c -Wall -Werror -fpic
+CROSS_COMPILE = arm-linux-gnueabihf-
 PREFIX ?= arm-
 DIRS = $(patsubst ./%/,%,$(wildcard ./*/))
 TOOLS = $(basename $(filter %.c, $(wildcard ./*/*)))
@@ -11,13 +12,13 @@ LIB_FLAGS = $(foreach tool,$(notdir $(TOOLS)), $(addsuffix $(tool),-L -l))
 all: $(PREFIX)busybox
 
 $(PREFIX)busybox: $(OBJ) main.c
-	$(CC) $(LIB_FLAGS) -Wall -o $@
+	$(CROSS_COMPILE)$(CC) $(LIB_FLAGS) -Wall -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CROSS_COMPILE)$(CC) $(CFLAGS) $< -o $@
 
 lib%.so: %.o
-	$(CC) -shared $< -o $@
+	$(CROSS_COMPILE)$(CC) -shared $< -o $@
 
 clean:
-	rm -f **/*.o **/*.so
+	rm -f **/*.o **/*.so $(PREFIX)busybox
