@@ -69,10 +69,7 @@ int main() {
     printf("Archivo > ");
     char path[PATH_MAX];
     char *read_path = fgets(path, PATH_MAX, stdin);
-    if (read_path != NULL) {
-      int len = strlen(read_path);
-      read_path[len - 1] = '\0';
-    }
+    remove_lastchar(read_path);
     return __cat__(path);
   }
 
@@ -80,10 +77,7 @@ int main() {
     printf("Archivo > ");
     char path[PATH_MAX];
     char *read_path = fgets(path, PATH_MAX, stdin);
-    if (read_path != NULL) {
-      int len = strlen(read_path);
-      read_path[len - 1] = '\0';
-    }
+    remove_lastchar(read_path);
     return __touch__(path);
   }
 
