@@ -9,11 +9,11 @@ int __uname__(void)
         fprintf(stdout, "Release\t\t%s\n", buf.release);
         fprintf(stdout, "Version\t\t%s\n", buf.version);
         fprintf(stdout, "Proccesor\t%s\n", buf.machine);
-        return 0;
+        return EXIT_SUCCESS;
     }
     else
     {
         perror("uname");
-        return 1;
+        return EXIT_FAILURE;
     }
 }

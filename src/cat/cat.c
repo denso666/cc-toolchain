@@ -10,7 +10,7 @@ int __cat__(const char* path)
         if ((st.st_mode & S_IFMT) == S_IFDIR)
         {
             fprintf(stderr, "cat: %s: Is a directory\n", path);
-            return 1;
+            return EXIT_FAILURE;
         }
         else
         {
@@ -24,18 +24,18 @@ int __cat__(const char* path)
                 }
                 close(fd);
                 free(buf);
-                return 0;
+                return EXIT_SUCCESS;
             }
             else
             {
                 perror("cat");
-                return 1;
+                return EXIT_FAILURE;
             }
         }
     }
     else
     {
         perror("cat");
-        return 1;
+        return EXIT_FAILURE;
     }
 }

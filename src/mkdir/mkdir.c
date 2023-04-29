@@ -11,7 +11,7 @@ int MakeDir_Function(char * directory)
     else
     {
         ret_val = -1;
-        fprintf(stderr, "Error: %s\n", strerror(errno));
+        perror("mkdir");
         return ret_val;
     }
     return ret_val;

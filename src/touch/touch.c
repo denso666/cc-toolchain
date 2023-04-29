@@ -10,7 +10,7 @@ int __touch__(const char* target_file)
         if ((st.st_mode & S_IFMT) == S_IFDIR)
         {
             fprintf(stderr, "touch: %s: Is a directory\n", target_file);
-            return 1;
+            return EXIT_FAILURE;
         }
         // update last access and modify date
         else
@@ -22,9 +22,9 @@ int __touch__(const char* target_file)
             if (utime(target_file, &new_time) != 0)
             {
                 perror("touch");
-                return 1;
+                return EXIT_FAILURE;
             }
-            return 0;
+            return EXIT_SUCCESS;
         }
     }
     // create file
@@ -33,8 +33,8 @@ int __touch__(const char* target_file)
         if (creat(target_file, S_IRUSR | S_IWUSR | S_IROTH | S_IRGRP) < 0)
         {
             perror("touch");
-            return 1;
+            return EXIT_FAILURE;
         }
-        return 0;
+        return EXIT_SUCCESS;
     }
 }
