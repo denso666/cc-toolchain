@@ -2,6 +2,7 @@
 #define UNAME_H
 
 #include <sys/utsname.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /**

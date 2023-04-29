@@ -2,6 +2,9 @@
 #include "cp/cp.h"
 #include "ls/ls.h"
 #include "utils/utils.h"
+#include "uname/uname.h"
+#include "touch/touch.h"
+#include "cat/cat.h"
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -62,6 +65,26 @@ int main() {
     return EXIT_SUCCESS;
   }
 
+  if (opt == 4) {
+    printf("Archivo > ");
+    char path[PATH_MAX];
+    char *read_path = fgets(path, PATH_MAX, stdin);
+    remove_lastchar(read_path);
+    return __cat__(path);
+  }
+
+  if (opt == 5) {
+    printf("Archivo > ");
+    char path[PATH_MAX];
+    char *read_path = fgets(path, PATH_MAX, stdin);
+    remove_lastchar(read_path);
+    return __touch__(path);
+  }
+
+  if (opt == 6) {
+    return __uname__();
+  }
+
   if (opt == -1) {
     printf("Command not found :(\n");
     return -1;
@@ -75,6 +98,9 @@ int menu(void) {
   printf("1. ls\n");
   printf("2. cp\n");
   printf("3. chown\n");
+  printf("4. cat\n");
+  printf("5. touch\n");
+  printf("6. uname\n");
   printf("n. command_n\n");
   printf("? ");
 
