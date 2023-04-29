@@ -15,10 +15,7 @@ int main() {
     printf("Directorio a listar > ");
     char path[PATH_MAX];
     char *read_path = fgets(path, PATH_MAX, stdin);
-    if (read_path != NULL) {
-      int len = strlen(read_path);
-      read_path[len - 1] = '\0';
-    }
+    remove_lastchar(read_path);
     if (ls(path) == EXIT_FAILURE) {
       perror("ls error");
       return EXIT_FAILURE;
@@ -30,9 +27,11 @@ int main() {
     char source[PATH_MAX];
     printf("Dirección a copiar > ");
     char *read_source = fgets(source, PATH_MAX, stdin);
+    remove_lastchar(read_source);
     char dest[PATH_MAX];
     printf("Dirección de destino > ");
     char *read_dest = fgets(dest, PATH_MAX, stdin);
+    remove_lastchar(read_dest);
     printf("Recusivo (Y/n) > ");
     char in = getchar();
     clean_buffer();
@@ -51,9 +50,11 @@ int main() {
     char source[PATH_MAX];
     printf("Dirección del archivo > ");
     char *read_source = fgets(source, PATH_MAX, stdin);
+    remove_lastchar(read_source);
     char owners[PATH_MAX];
     printf("Nuevo dueño (usuario:grupo) > ");
     char *read_owners = fgets(owners, PATH_MAX, stdin);
+    remove_lastchar(read_owners);
     if (custom_chown(read_source, read_owners) == EXIT_FAILURE) {
       perror("cp error");
       return EXIT_FAILURE;

@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
  * Ask the system to create a directory
