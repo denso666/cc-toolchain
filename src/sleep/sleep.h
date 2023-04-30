@@ -15,6 +15,6 @@
  * Ask the system to sleep the process
  * @return int On success, 0 is returned. On error, -1 is returned.
  */
-int Sleep_Function(int argc);
+int Sleep_Function(char *seconds);
 
 #endif

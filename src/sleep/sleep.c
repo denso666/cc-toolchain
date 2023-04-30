@@ -4,9 +4,9 @@ int Sleep_Function(char * seconds)
 {
     int ret_val = EXIT_SUCCESS;
     long long unsigned int sleepTime = 0;
-    if(isdigit(seconds[0]))
+    if(isdigit(seconds))
     {
-        sleepTime = atoll(seconds[0]);
+        sleepTime = atoll(seconds);
     }
     else
     {
