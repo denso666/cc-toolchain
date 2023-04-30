@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <sys/sysinfo.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 #define SEC2MIN(x) (x)/60

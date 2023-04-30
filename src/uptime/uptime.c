@@ -2,7 +2,7 @@
 
 int Uptime_Function(void)
 {
-    int ret_val = 0;
+    int ret_val = EXIT_SUCCESS;
     struct sysinfo SystemInformation;
     int days = 0;
     int hours = 0;
@@ -21,7 +21,7 @@ int Uptime_Function(void)
     }
     else
     {
-        ret_val = -1;
+        ret_val = EXIT_FAILURE;
         fprintf(stderr, "Error: %s\n", strerror(val));
         return ret_val;
     }

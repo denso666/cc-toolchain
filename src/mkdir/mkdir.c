@@ -2,7 +2,7 @@
 
 int MakeDir_Function(char * directory)
 {
-    int ret_val = 0;
+    int ret_val = EXIT_SUCCESS;
     int val = mkdir(directory, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
     if (val ==  0)
     {
@@ -10,7 +10,7 @@ int MakeDir_Function(char * directory)
     }
     else
     {
-        ret_val = -1;
+        ret_val = EXIT_FAILURE;
         perror("mkdir");
         return ret_val;
     }
