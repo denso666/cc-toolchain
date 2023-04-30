@@ -5,6 +5,9 @@
 #include "uname/uname.h"
 #include "touch/touch.h"
 #include "cat/cat.h"
+#include "sleep/sleep.h"
+#include "mkdir/mkdir.h"
+#include "uptime/uptime.h"
 #include <limits.h>
 #include <stdio.h>
 #include <string.h>
@@ -85,6 +88,26 @@ int main() {
     return __uname__();
   }
 
+  if (opt == 7) {
+    printf("Tiempo >");
+    char path[PATH_MAX];
+    char * read_path = fgets(path,PATH_MAX,stdin);
+    remove_lastchar(read_path);
+    return sleep(path);
+  }
+  
+  if (opt == 8) {
+    printf("Nombre de la carpeta >");
+    char path[PATH_MAX];
+    char * read_path = fgets(path,PATH_MAX,stdin);
+    remove_lastchar(read_path);
+    return mkdir(path);
+  }
+  
+  if (opt == 9) {
+    return uptime();
+  }
+
   if (opt == -1) {
     printf("Command not found :(\n");
     return -1;
@@ -101,6 +124,9 @@ int menu(void) {
   printf("4. cat\n");
   printf("5. touch\n");
   printf("6. uname\n");
+  printf("7. sleep");
+  printf("8. uptime");
+  printf("9. mkdir");
   printf("n. command_n\n");
   printf("? ");
 
