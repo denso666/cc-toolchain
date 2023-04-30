@@ -93,7 +93,7 @@ int main() {
     char path[PATH_MAX];
     char * read_path = fgets(path,PATH_MAX,stdin);
     remove_lastchar(read_path);
-    return sleep(path);
+    return Sleep_Function(path);
   }
   
   if (opt == 8) {
@@ -101,11 +101,11 @@ int main() {
     char path[PATH_MAX];
     char * read_path = fgets(path,PATH_MAX,stdin);
     remove_lastchar(read_path);
-    return mkdir(path);
+    return MakeDir_Function(path);
   }
   
   if (opt == 9) {
-    return uptime();
+    return Uptime_Function();
   }
 
   if (opt == -1) {
