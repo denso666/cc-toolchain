@@ -89,7 +89,7 @@ int main() {
   }
 
   if (opt == 7) {
-    printf("Tiempo >");
+    printf("Tiempo > ");
     char path[PATH_MAX];
     char * read_path = fgets(path,PATH_MAX,stdin);
     remove_lastchar(read_path);
@@ -97,7 +97,7 @@ int main() {
   }
   
   if (opt == 8) {
-    printf("Nombre de la carpeta >");
+    printf("Nombre de la carpeta > ");
     char path[PATH_MAX];
     char * read_path = fgets(path,PATH_MAX,stdin);
     remove_lastchar(read_path);
@@ -124,10 +124,9 @@ int menu(void) {
   printf("4. cat\n");
   printf("5. touch\n");
   printf("6. uname\n");
-  printf("7. sleep");
-  printf("8. uptime");
-  printf("9. mkdir");
-  printf("n. command_n\n");
+  printf("7. sleep\n");
+  printf("8. mkdir\n");
+  printf("9. uptime\n");
   printf("? ");
 
   char in = getchar();
